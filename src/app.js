@@ -16,5 +16,5 @@ app.use(express.json());
 
 app.get("/", (req, res) => res.send("API Running"));
 
-app.post("/api/save",saveRoutes);
+app.post("/save",saveRoutes);
 export default app;
