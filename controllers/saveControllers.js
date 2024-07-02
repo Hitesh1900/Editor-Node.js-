@@ -1,6 +1,6 @@
 import Save from "../models/save.js";
 import dotenv from "dotenv";
-import cheerio from 'cheerio';
+import cheerio from "cheerio";
 
 dotenv.config();
 
@@ -35,6 +35,7 @@ export const SaveFiles = async (req, res) => {
     
         const videos = [];
         $('video').each((index, element) => {
+
           videos.push({
             type: 'video',
             url: $(element).attr('src'),
@@ -45,6 +46,7 @@ export const SaveFiles = async (req, res) => {
         const allLinks = links.concat(images, videos);
         await Save.bulkCreate(allLinks);
         console.log('Links saved to database:', allLinks);
+
         res.send('Links saved successfully.');
       } catch (err) {
         console.error('Error saving links to database:', err);
